@@ -1,0 +1,8 @@
+#Fri Jan 19 08:43:56 CET 2018
+connection.gradle.distribution=GRADLE_DISTRIBUTION(LOCAL_INSTALLATION(C\:\\Users\\sebas\\scoop\\apps\\gradle\\current))
+override.workspace.settings=true
+auto.sync=false
+gradle.user.home=
+connection.project.dir=
+build.scans.enabled=false
+offline.mode=false

@@ -1,0 +1,21 @@
+apply plugin: 'java'
+sourceSets {
+    main {
+      java {
+        srcDir 'src'
+      }
+    }
+
+   }
+
+
+
+jar {
+
+   baseName = 'a2'
+   version = '1'
+
+   manifest {
+      attributes 'Main-Class': 'dt062g.sest1601.assignment2.Assignment2'
+   }
+}

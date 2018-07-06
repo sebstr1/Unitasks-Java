@@ -1,0 +1,33 @@
+apply plugin: 'java'
+task run (type:JavaExec) {
+  classpath = sourceSets.main.runtimeClasspath
+  main = 'dt062g.sest1601.assignment5.Assignment5'
+
+
+}
+
+//https://stackoverflow.com/questions/20700053/how-to-add-local-jar-file-dependency-to-build-gradle-file
+dependencies {
+    // compile files('libraries/*.jar')
+    compile fileTree(dir: 'libraries', include: ['*.jar'])
+}
+
+sourceSets {
+  main {
+    java {
+      srcDir 'src'
+    }
+  }
+}
+
+
+
+jar {
+
+   baseName = 'a5'
+   version = '1'
+
+   manifest {
+      attributes 'Main-Class': 'dt062g.sest1601.assignment5.Assignment5'
+   }
+}

@@ -1,0 +1,21 @@
+apply plugin: 'java'
+sourceSets {
+    main {
+      java {
+        srcDir 'src'
+      }
+    }
+
+   }
+
+
+
+jar {
+
+   baseName = 'GeoCalc'
+   version = '1.0'
+
+   manifest {
+      attributes 'Main-Class': 'dt062g.sest1601.assignment1.GeoCalc'
+   }
+}

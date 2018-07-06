@@ -1,0 +1,65 @@
+apply plugin: 'java'
+task run (type:JavaExec) {
+  classpath = sourceSets.main.runtimeClasspath
+  main = 'dt062g.sest1601.assignment8.Assignment8'
+
+
+}
+
+task server (type:JavaExec) {
+  classpath = sourceSets.main.runtimeClasspath
+  main = 'dt062g.sest1601.assignment8.server.Server'
+
+
+}
+
+task client (type:JavaExec) {
+  classpath = sourceSets.main.runtimeClasspath
+  main = 'dt062g.sest1601.assignment8.client.ClientTest'
+
+
+}
+
+
+
+//https://stackoverflow.com/questions/20700053/how-to-add-local-jar-file-dependency-to-build-gradle-file
+dependencies {
+    // compile files('libraries/*.jar')
+    compile fileTree(dir: 'libraries', include: ['*.jar'])
+}
+
+sourceSets {
+  main {
+    java {
+      srcDir 'src'
+    }
+    resources {
+      srcDir 'src' 
+    }
+  }
+}
+
+
+
+jar {
+
+   baseName = 'server'
+   version = '1'
+
+   from {
+
+        configurations.runtime.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+
+   manifest {
+      attributes 'Main-Class': 'dt062g.sest1601.assignment8.server.Server',
+      'Class-Path': configurations.runtime.files.collect { "lib/$it.name" }.join(' ')
+   }
+
+}

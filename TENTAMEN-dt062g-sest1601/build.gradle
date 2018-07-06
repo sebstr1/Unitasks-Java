@@ -1,0 +1,39 @@
+
+apply plugin: 'java'
+task run (type: JavaExec) {
+  classpath = sourceSets.main.runtimeClasspath
+
+  main = 'dt062g.sest1601.tenta.Bingo'
+}
+
+sourceSets {
+  main {
+    java {
+      srcDir 'src'
+    }
+    resources {
+      srcDir 'src'
+    }
+  }
+}
+
+jar {
+ baseName = 'Bingo'
+ manifest {
+   attributes 'Main-Class': 'dt062g.sest1601.tenta.Bingo'
+ }
+ from {
+    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+  }
+}
+
+repositories {
+
+}
+
+dependencies {
+  compile files('src/pictures1')
+}
+task myJavadocs(type: Javadoc) {
+  source = sourceSets.main.allJava
+}
